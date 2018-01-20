@@ -46,4 +46,5 @@ directory=`pwd`
 export PATH=$PATH:$directory
 cd ..
 ./build.sh
-
+cd vargant
+vargant up
