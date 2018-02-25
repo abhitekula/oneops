@@ -21,8 +21,8 @@ else
   printf "ERROR: An RVM installation was not found.\n"
 
 fi
-rvm install 2.0.0
-rvm use 2.0.0
+rvm install 2.1.0
+rvm use 2.1.0
 sudo apt install gems -y
 gem install packer
 gem install bundler
@@ -32,8 +32,9 @@ sudo apt install virtualbox -y
 sudo apt install vagrant -y
 sudo apt install libxslt-dev libxml2-dev -y
 mvn clean install
+#mvn install -rf :oneops-admin
 cd oneops-distribution/target/
-tar -zcvf distribution-18.01.15-7-SNAPSHOT-oneops.tar.gz distribution-18.01.15-7-SNAPSHOT-archive/
+tar -zcvf distribution-18.02.22-2-SNAPSHOT-oneops.tar.gz distribution-18.02.22-2-SNAPSHOT-archive/
 cd ..
 cd ..
 mvn install -rf :distribution
@@ -46,5 +47,5 @@ directory=`pwd`
 export PATH=$PATH:$directory
 cd ..
 ./build.sh
-cd vargant
-vargant up
+cd vagrant
+vagrant up
