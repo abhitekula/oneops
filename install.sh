@@ -34,7 +34,8 @@ sudo apt install libxslt-dev libxml2-dev -y
 mvn clean install
 #mvn install -rf :oneops-admin
 cd oneops-distribution/target/
-tar -zcvf distribution-18.02.22-2-SNAPSHOT-oneops.tar.gz distribution-18.02.22-2-SNAPSHOT-archive/
+export ONEOPS_VERSION=$(mvn -q -N -Dexec.executable="echo" -Dexec.args='${project.version}' exec:exec)
+tar -zcvf distribution-${ONEOPS_VERSION}-oneops.tar.gz distribution-${ONEOPS_VERSION}-archive/
 cd ..
 cd ..
 mvn install -rf :distribution
@@ -43,8 +44,7 @@ sudo apt install golang -y
 wget https://releases.hashicorp.com/packer/1.1.3/packer_1.1.3_linux_amd64.zip
 unzip packer_1.1.3_linux_amd64.zip -d packer
 cd packer
-directory=`pwd`
-export PATH=$PATH:$directory
+sudo mv packer /usr/local/bin
 cd ..
 ./build.sh
 cd vagrant
