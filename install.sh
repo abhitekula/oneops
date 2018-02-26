@@ -21,8 +21,8 @@ else
   printf "ERROR: An RVM installation was not found.\n"
 
 fi
-rvm install 2.1.0
-rvm use 2.1.0
+rvm install 2.0.0
+rvm use 2.0.0
 sudo apt install gems -y
 gem install packer
 gem install bundler
@@ -33,8 +33,8 @@ sudo apt install vagrant -y
 sudo apt install libxslt-dev libxml2-dev -y
 mvn clean install
 #mvn install -rf :oneops-admin
-cd oneops-distribution/target/
 export ONEOPS_VERSION=$(mvn -q -N -Dexec.executable="echo" -Dexec.args='${project.version}' exec:exec)
+cd oneops-distribution/target/
 tar -zcvf distribution-${ONEOPS_VERSION}-oneops.tar.gz distribution-${ONEOPS_VERSION}-archive/
 cd ..
 cd ..
